@@ -88,12 +88,20 @@
             
             //$target_image =ImageCreate($imgW * $pixelPerPoint, $imgH * $pixelPerPoint);
             //ImageCopyResized($target_image, $base_image, 0, 0, 0, 0, $imgW * $pixelPerPoint, $imgH * $pixelPerPoint, $imgW, $imgH);
+			//Get Desired size of image.
+			//Insert the following code to generate desired size QR Code
+			//Example:----- (Note: this should be written in the file where we are going to generate the QR Code)
+			//------define('IMAGE_WIDTH',160);
+			//------define('IMAGE_HEIGHT',160);
+			//------QRcode::png();
+
 			$targetW = (defined('IMAGE_WIDTH') ? IMAGE_WIDTH : $imgW * $pixelPerPoint );
 			$targetH = (defined('IMAGE_HEIGHT') ? IMAGE_HEIGHT : $imgH * $pixelPerPoint );
 			$target_image =ImageCreate($targetW, $targetH);
 
 			ImageCopyResized($target_image, $base_image, 0, 0, 0, 0, $targetW, $targetH, $imgW, $imgH);
 
+			//Transparent Background QR code
 			ImageColorTransparent($target_image, $col[0]);
             ImageDestroy($base_image);
             
